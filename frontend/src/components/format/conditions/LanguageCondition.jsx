@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BrowserSelect from '@ui/BrowserSelect';
-import {LANGUAGES} from '@/constants/languages';
+import { LANGUAGES } from '@/constants/languages';
 
-const LanguageCondition = ({condition, onChange}) => {
-    // Convert languages to options format but exclude special options
-    const languageOptions = LANGUAGES.filter(lang => !lang.isSpecial) // Remove Any/Original options
-        .map(lang => ({
-            value: lang.id,
-            label: lang.name
-        }));
+const LanguageCondition = ({ condition, onChange }) => {
+    // Include all languages for custom formats, including special ones like "unknown" and "original"
+    const languageOptions = LANGUAGES.map(lang => ({
+        value: lang.id,
+        label: lang.name
+    }));
 
     return (
         <div className='flex flex-1 items-center gap-4'>
